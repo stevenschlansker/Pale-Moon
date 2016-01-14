@@ -308,7 +308,8 @@ mozilla::StaticRefPtr<MacWakeLockListener> sWakeLockListener;
 static void
 AddScreenWakeLockListener()
 {
-  sPowerManagerService = do_GetService(POWERMANAGERSERVICE_CONTRACTID);
+  nsCOMPtr<nsIPowerManagerService> sPowerManagerService = do_GetService(
+                                                          POWERMANAGERSERVICE_CONTRACTID);
   if (sPowerManagerService) {
     sWakeLockListener = new MacWakeLockListener();
     sPowerManagerService->AddWakeLockListener(sWakeLockListener);
@@ -320,7 +321,8 @@ AddScreenWakeLockListener()
 static void
 RemoveScreenWakeLockListener()
 {
-  sPowerManagerService = do_GetService(POWERMANAGERSERVICE_CONTRACTID);
+  nsCOMPtr<nsIPowerManagerService> sPowerManagerService = do_GetService(
+                                                          POWERMANAGERSERVICE_CONTRACTID);
   if (sPowerManagerService) {
     sPowerManagerService->RemoveWakeLockListener(sWakeLockListener);
     sPowerManagerService = nullptr;
