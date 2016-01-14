@@ -45,7 +45,7 @@ using namespace mozilla::widget;
 // Gecko. For example when we're playing video in a foreground tab we
 // don't want the screen saver to turn on.
 
-class MacWakeLockListener MOZ_FINAL : public nsIDOMMozWakeLockListener {
+class MacWakeLockListener : public nsIDOMMozWakeLockListener {
 public:
 NS_DECL_ISUPPORTS;
 
@@ -303,8 +303,7 @@ nsAppShell::~nsAppShell()
 }
 
 NS_IMPL_ISUPPORTS(MacWakeLockListener, nsIDOMMozWakeLockListener)
-nsCOMPtr<nsIPowerManagerService> sPowerManagerService = nullptr;
-nsCOMPtr<nsIDOMMozWakeLockListener> sWakeLockListener = nullptr;
+mozilla::StaticRefPtr<MacWakeLockListener> sWakeLockListener;
 
 static void
 AddScreenWakeLockListener()
