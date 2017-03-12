@@ -496,7 +496,7 @@ AppleATDecoder::GetImplicitAACMagicCookie(const MediaRawData* aSample)
   OSStatus status = AudioFileStreamParseBytes(mStream,
                                               adtssample->Size(),
                                               adtssample->Data(),
-                                              0 /* discontinuity */);
+                                              kAudioFileStreamParseFlag_Discontinuity);
   if (status) {
     NS_WARNING("Couldn't parse sample");
   }
