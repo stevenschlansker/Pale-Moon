@@ -4,10 +4,10 @@ mk_add_options MOZ_MAKE_FLAGS=-j8
 ac_add_options --with-distribution-id=MCP
 #
 ac_add_options --enable-update-packaging
-ac_add_options --enable-official-branding
-ac_add_options --enable-release
+#ac_add_options --enable-official-branding
+#ac_add_options --enable-release
 # ac_add_options --with-branding=browser/branding/unstable # disable for release
-export MOZILLA_OFFICIAL=1
+#export MOZILLA_OFFICIAL=1
 #
 mk_add_options MOZ_CO_PROJECT=browser
 ac_add_options --enable-application=browser
@@ -18,4 +18,6 @@ ac_add_options --enable-jemalloc
 ac_add_options --enable-shared-js
 #
 #ac_add_options --enable-debug
+ac_add_options --disable-tests
 ac_add_options --enable-strip
+ac_add_options --enable-devtools
